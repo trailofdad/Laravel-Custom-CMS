@@ -8,7 +8,7 @@
 
     {!! Form::model($user = new \App\User, ['url' => 'users']) !!}
 
-    @include('users.form', ['submitButtonText' => 'Create user'])
+    @include('users.form', ['submitButtonText' => 'Create User'])
 
     {!! Form::close() !!}
 

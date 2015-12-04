@@ -21,7 +21,7 @@ Route::resource('articles', 'ArticleController');
 
 Route::resource('template', 'TemplateController');
 
-Route::resource('user', 'UserController');
+Route::resource('users', 'UserController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
