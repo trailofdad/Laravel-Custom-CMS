@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCssesTable extends Migration {
+class CreateTemplatesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCssesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('csses', function(Blueprint $table)
+		Schema::create('Templates', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
@@ -26,7 +26,7 @@ class CreateCssesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('csses');
+		Schema::drop('Templates');
 	}
 
 }

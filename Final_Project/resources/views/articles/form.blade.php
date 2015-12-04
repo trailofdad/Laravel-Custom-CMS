@@ -1,15 +1,17 @@
-@extends('app')
+<div class="form-group">
+    {!! Form::label('title', 'Title:') !!}
+    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+</div>
 
-@section('content')
+<div class="form-group">
+    {!! Form::label('description', 'Description:') !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+</div>
 
-    <h1>Create a new page</h1>
+<div class="form-group">
+    {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
+</div>
 
-    <hr/>
+@section('footer')
 
-    {!! Form::model($page = new \App\Page, ['url' => 'pages']) !!}
-
-    @include('pages.form', ['submitButtonText' => 'Create Article'])
-
-    {!! Form::close() !!}
-
-@stop
+@endsection

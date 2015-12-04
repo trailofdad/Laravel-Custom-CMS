@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class css extends Model {
+class template extends Model {
 
     protected $fillable = [
 

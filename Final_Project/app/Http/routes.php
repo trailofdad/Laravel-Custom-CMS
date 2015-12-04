@@ -17,7 +17,9 @@ Route::get('home', 'HomeController@index');
 
 Route::resource('pages', 'PageController');
 
-Route::get('articles', 'ArticleController');
+Route::resource('articles', 'ArticleController');
+
+Route::resource('template', 'TemplateController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
