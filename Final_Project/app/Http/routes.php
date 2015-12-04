@@ -17,6 +17,8 @@ Route::get('home', 'HomeController@index');
 
 Route::resource('pages', 'PageController');
 
+Route::get('articles', 'ArticleController');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

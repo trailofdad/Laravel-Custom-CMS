@@ -43,9 +43,9 @@ class PageController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		//
+        return view('pages.show', compact('Page'));
 	}
 
 	/**
@@ -54,9 +54,10 @@ class PageController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
-		//
+
+        return view('pages.edit', compact('page'));
 	}
 
 	/**
