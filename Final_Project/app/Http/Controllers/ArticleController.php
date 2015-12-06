@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
+use Request;
 
 class ArticleController extends Controller {
 
@@ -12,9 +13,16 @@ class ArticleController extends Controller {
 	 *
 	 * @return Response
 	 */
+    public function _construct(){
+
+
+    }
+
 	public function index()
 	{
-		//
+        $articles = Article::latest('published_at')->published()->get();
+        $latest = Article::latest()->first();
+        return view('articles.index', compact('articles', 'latest'));
 	}
 
 	/**
@@ -34,7 +42,8 @@ class ArticleController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        Article::create(Request::all());
+        return redirect('articles');
 	}
 
 	/**
@@ -43,9 +52,9 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Article $article)
 	{
-
+        return view('articles.show', compact('article'));
 	}
 
 	/**
@@ -80,5 +89,11 @@ class ArticleController extends Controller {
 	{
 		//
 	}
+
+//    private function createArticle(ArticleRequest $request)
+//    {
+//        $article = \Auth::user()->articles()->create($request->all());
+//        return $article;
+//    }
 
 }
