@@ -51,8 +51,9 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Article $article)
+	public function show($id)
 	{
+        $article = Article::findOrFail($id);
         return view('articles.show', compact('article'));
 	}
 
