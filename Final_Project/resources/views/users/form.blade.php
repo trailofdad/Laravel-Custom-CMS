@@ -1,20 +1,20 @@
 <div class="form-group">
-    {!! Form::label('First Name', 'First Name:') !!}
+    {!! Form::label('FirstName', 'First Name:') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('Last Name', 'Last Name:') !!}
+    {!! Form::label('LastName', 'Last Name:') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('Email', 'Email:') !!}
+    {!! Form::label('email', 'Email:') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('Enter Password', 'Enter Password:') !!}
+    {!! Form::label('password', 'Enter Password:') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>
 

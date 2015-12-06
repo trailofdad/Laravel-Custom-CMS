@@ -10,12 +10,12 @@
 
 <div class="form-group">
     {!! Form::label('active', 'Active:') !!}
-    {!! Form::select('Active', array('Y' => 'Yes', 'N' => 'No'), 'N', ['class' => 'form-control']) !!}
+    {!! Form::select('active', array('Yes' => 'Yes', 'N' => 'No'), ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('css', 'CSS:') !!}
-    {!! Form::textarea('CSS', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('css', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

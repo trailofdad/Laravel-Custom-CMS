@@ -2,13 +2,13 @@
 
 @section('content')
 
-<h1>Edit: {!! $page->title !!}</h1>
+<h1>Edit: {!! $template->title !!}</h1>
 
 <hr/>
 
-{!! Form::model($page, ['method' => 'PATCH', 'action' => ['PagesController@update', $page->id]]) !!}
+{!! Form::model($template, ['method' => 'PATCH', 'action' => ['TemplateController@update', $template->id]]) !!}
 
-@include('pages.form',['submitButtonText' => 'Update Page'])
+@include('pages.form',['submitButtonText' => 'Update Template'])
 
 {!! Form::close() !!}
 

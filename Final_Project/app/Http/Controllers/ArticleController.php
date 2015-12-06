@@ -20,9 +20,8 @@ class ArticleController extends Controller {
 
 	public function index()
 	{
-        $articles = Article::latest('published_at')->published()->get();
-        $latest = Article::latest()->first();
-        return view('articles.index', compact('articles', 'latest'));
+        $articles = Article::get()->all();
+        return view('articles.index', compact('articles'));
 	}
 
 	/**
@@ -52,8 +51,9 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Article $article)
+	public function show($id)
 	{
+        $article = Article::findOrFail($id);
         return view('articles.show', compact('article'));
 	}
 

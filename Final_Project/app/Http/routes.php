@@ -19,7 +19,7 @@ Route::resource('pages', 'PageController');
 
 Route::resource('articles', 'ArticleController');
 
-Route::resource('template', 'TemplateController');
+Route::resource('templates', 'TemplateController');
 
 Route::resource('users', 'UserController');
 
