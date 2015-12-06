@@ -3,7 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\User;
+use Request;
 
 class UserController extends Controller {
 
@@ -14,7 +15,8 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $users = user::get()->all();
+        return view('users.index', compact('users'));
 	}
 
 	/**
@@ -34,7 +36,8 @@ class UserController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        User::create(Request::all());
+        return redirect('users');
 	}
 
 	/**
@@ -45,7 +48,8 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $users = User::findOrFail($id);
+        return view('users.show', compact('users'));
 	}
 
 	/**
