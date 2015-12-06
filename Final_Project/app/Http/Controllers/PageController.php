@@ -3,7 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\Page;
+use Request;
 
 class PageController extends Controller {
 
@@ -14,7 +15,8 @@ class PageController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $pages = Page::get()->all();
+        return view('pages.index', compact('pages'));
 	}
 
 	/**
@@ -34,18 +36,20 @@ class PageController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        Page::create(Request::all());
+        return redirect('pages');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show()
+    /**
+     * Display the specified resource.
+     *
+     * @param Page $page
+     * @return Response
+     * @internal param int $id
+     */
+	public function show(Page $page)
 	{
-        return view('pages.show', compact('Page'));
+        return view('pages.show', compact('page'));
 	}
 
 	/**
