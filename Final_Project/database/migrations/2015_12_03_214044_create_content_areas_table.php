@@ -14,8 +14,11 @@ class CreateContentAreasTable extends Migration {
 	{
 		Schema::create('content_areas', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+            $table->increments('id');
+            $table->timestamps('created_at');
+            $table->text('description');
+            $table->string('name');
+            $table->string('alias');
 		});
 	}
 

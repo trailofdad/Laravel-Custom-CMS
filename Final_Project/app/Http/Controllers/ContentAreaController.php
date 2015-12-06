@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\ContentArea;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Request;
 
 class ContentAreaController extends Controller {
 
@@ -14,7 +15,8 @@ class ContentAreaController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        $contentAreas = ContentArea::get()->all();
+        return view('contentAreas.index', compact('contentAreas'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class ContentAreaController extends Controller {
 	 */
 	public function create()
 	{
-		//
+        return view('contentAreas.create');
 	}
 
 	/**
@@ -34,7 +36,8 @@ class ContentAreaController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        ContentArea::create(Request::all());
+        return redirect('contentAreas');
 	}
 
 	/**
@@ -45,7 +48,8 @@ class ContentAreaController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $contentArea = ContentArea::findOrFail($id);
+        return view('contentAreas.show', compact('contentArea'));
 	}
 
 	/**
