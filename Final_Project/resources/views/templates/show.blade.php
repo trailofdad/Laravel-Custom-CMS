@@ -2,13 +2,13 @@
 
 @section('content')
 
-<h1>{{$page->title}}</h1>
-<hr/>
-<article>
-<div class="body">{{$page->body}}</div>
-<br/>
-<a href="{{action('PageController@index')}}">&lt;&lt;Go Back</a>
-</article>
+    <h1>{{$template->name}}</h1>
+    <hr/>
+    <article>
+        <div class="body">{{$template->css}}</div>
+        <br/>
+        <a href="{{action('TemplateController@index')}}">&lt;&lt;Go Back</a>
+    </article>
 
 
 @stop

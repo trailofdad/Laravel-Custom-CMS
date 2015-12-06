@@ -8,7 +8,8 @@ class template extends Model {
 
         'name',
         'description',
-        'active_state',
+        'active',
+        'css',
         'content',
         'created_by',
         'creation_date',
