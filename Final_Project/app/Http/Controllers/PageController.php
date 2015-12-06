@@ -47,8 +47,9 @@ class PageController extends Controller {
      * @return Response
      * @internal param int $id
      */
-	public function show(Page $page)
+	public function show($id)
 	{
+        $page = Page::findOrFail($id);
         return view('pages.show', compact('page'));
 	}
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>{{$page->name}}</h1>
+<h1 style="margin-top: 40px">{{$page->name}}</h1>
 <hr/>
 <article>
     <h3>Alias: {{$page->alias}}</h3>
