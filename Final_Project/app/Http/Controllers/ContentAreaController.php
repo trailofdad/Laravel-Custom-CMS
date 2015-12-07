@@ -85,7 +85,11 @@ class ContentAreaController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $contentArea = ContentArea::findOrFail($id);
+
+        $contentArea->delete();
+
+        return redirect()->route('contentAreas.index');
 	}
 
 }

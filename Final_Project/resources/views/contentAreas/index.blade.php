@@ -17,7 +17,8 @@
             <div class="description">{{$contentArea->description}}</div>
 
         </article>
-
+<br>
+        <a href="{{ route('contentAreas.edit', $contentArea->id) }}" class="btn btn-primary">Edit Content Area</a>
     @endforeach
 
 @stop

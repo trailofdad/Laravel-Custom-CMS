@@ -86,7 +86,11 @@ class PageController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $page = Page::findOrFail($id);
+
+        $page->delete();
+
+        return redirect()->route('pages.index');
 	}
 
 }

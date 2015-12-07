@@ -85,7 +85,11 @@ class TemplateController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $template = Template::findOrFail($id);
+
+        $template->delete();
+
+        return redirect()->route('$templates.index');
 	}
 
 }

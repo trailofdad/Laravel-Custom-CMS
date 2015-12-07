@@ -17,7 +17,8 @@
                         <div class="description">{{$page->description}}</div>
 
                 </article>
-
+                <br>
+                <a href="{{ route('pages.edit', $page->id) }}" class="btn btn-primary">Edit Page</a>
             @endforeach
 
     @stop
