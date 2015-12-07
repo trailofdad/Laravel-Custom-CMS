@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use App\Article;
+use App\ContentArea;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
+use App\Page;
 use Request;
 
 class ArticleController extends Controller {
@@ -31,7 +33,9 @@ class ArticleController extends Controller {
 	 */
 	public function create()
 	{
-        return view('articles.create');
+        $pages = Page::oldest()->lists('name','id');
+        $contentAreas= ContentArea::oldest()->lists('name','id');
+        return view('articles.create', compact('pages','contentAreas'));
 	}
 
 	/**

@@ -4,8 +4,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('alias', 'Alias:') !!}
-    {!! Form::text('alias', null, ['class' => 'form-control']) !!}
+    {!! Form::label('orderBy', 'Order By:') !!}
+    {!! Form::input('number','Order By', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

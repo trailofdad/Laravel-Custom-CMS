@@ -43,3 +43,9 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>
+
+    tinymce.init({
+        selector: 'textarea#tiny' // change this value according to your HTML
+    });</script>
