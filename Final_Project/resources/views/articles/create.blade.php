@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Create a new article</h1>
+    <h1 style="margin-top: 40px">Create a new article</h1>
 
     <hr/>
 
