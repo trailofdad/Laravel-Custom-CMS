@@ -6,13 +6,12 @@
 
 <hr/>
 
-{!! Form::model($page, ['method' => 'PATCH', 'action' => ['PagesController@update', $page->id]]) !!}
+{!! Form::model($page, ['method' => 'PATCH', 'action' => ['PageController@update', $page->id]]) !!}
 
 @include('pages.form',['submitButtonText' => 'Update Page'])
 
 {!! Form::close() !!}
 
-@include('errors.list')
 
 @endsection
 @stop
