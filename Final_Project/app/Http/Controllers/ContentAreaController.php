@@ -3,8 +3,8 @@
 use App\ContentArea;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Request;
+
 
 class ContentAreaController extends Controller {
 
@@ -60,7 +60,8 @@ class ContentAreaController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $contentArea = ContentArea::findOrFail($id);
+        return view('contentAreas.edit', compact('contentArea'));
 	}
 
 	/**
@@ -71,7 +72,9 @@ class ContentAreaController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $contentArea = ContentArea::findOrFail($id);
+        $contentArea->update(Request::all());
+        return redirect('contentArea');
 	}
 
 	/**

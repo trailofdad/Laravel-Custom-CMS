@@ -36,7 +36,7 @@ class TemplateController extends Controller {
 	 */
 	public function store()
 	{
-        template::create(Request::all());
+        Template::create(Request::all());
         return redirect('templates');
 	}
 
@@ -60,7 +60,8 @@ class TemplateController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $template = Template::findOrFail($id);
+        return view('templates.edit', compact('template'));
 	}
 
 	/**
@@ -71,7 +72,9 @@ class TemplateController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $template = Template::findOrFail($id);
+        $template->update(Request::all());
+        return redirect('templates');
 	}
 
 	/**

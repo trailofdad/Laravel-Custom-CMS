@@ -8,11 +8,10 @@
 
 {!! Form::model($template, ['method' => 'PATCH', 'action' => ['TemplateController@update', $template->id]]) !!}
 
-@include('pages.form',['submitButtonText' => 'Update Template'])
+@include('templates.form',['submitButtonText' => 'Update Template'])
 
 {!! Form::close() !!}
 
-@include('errors.list')
 
 @endsection
 @stop
