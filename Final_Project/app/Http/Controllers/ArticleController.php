@@ -59,6 +59,7 @@ class ArticleController extends Controller {
 	{
         $article = Article::findOrFail($id);
         return view('articles.show', compact('article'));
+
 	}
 
 	/**
@@ -70,7 +71,10 @@ class ArticleController extends Controller {
 	public function edit($id)
 	{
         $article = Article::findOrFail($id);
-        return view('articles.edit', compact('article'));
+        $pages = Page::oldest()->lists('name','id');
+        $contentAreas= ContentArea::oldest()->lists('name','id');
+        return view('articles.edit', compact('article','pages','contentAreas'));
+
 	}
 
 	/**

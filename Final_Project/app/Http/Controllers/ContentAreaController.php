@@ -60,8 +60,8 @@ class ContentAreaController extends Controller {
 	 */
 	public function edit($id)
 	{
-        $contentArea = ContentArea::findOrFail($id);
-        return view('contentAreas.edit', compact('contentArea'));
+        $contentArea = ContentAreas::findOrFail($id);
+        return view('contentAreas.edit', compact('contentAreas'));
 	}
 
 	/**
@@ -74,7 +74,7 @@ class ContentAreaController extends Controller {
 	{
         $contentArea = ContentArea::findOrFail($id);
         $contentArea->update(Request::all());
-        return redirect('contentArea');
+        return redirect('contentAreas');
 	}
 
 	/**
