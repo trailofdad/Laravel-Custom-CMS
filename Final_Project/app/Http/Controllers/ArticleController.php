@@ -6,7 +6,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Page;
+use Illuminate\Support\Facades\Auth;
 use Request;
+use App\User;
 
 class ArticleController extends Controller {
 
@@ -38,14 +40,19 @@ class ArticleController extends Controller {
         return view('articles.create', compact('pages','contentAreas'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param ArticleRequest $request
+     * @return Response
+     */
+	public function store(ArticleRequest $request)
 	{
-        Article::create(Request::all());
+        $article = new Article($request->all());
+
+        Auth::user()->articles()->save($article);
+
+//        Article::create(Request::all());
         return redirect('articles');
 	}
 
