@@ -46,7 +46,7 @@ class UserController extends Controller {
 //        User::create(Request::all());
 //        return redirect('users');
 
-        $user = new App\User($request->all());
+        $user = User::create(Request::all());
         $user->FirstName = $request->input('FirstName');
         $user->LastName = $request->input('LastName');
         $user->email = $request->input('email');
@@ -80,7 +80,9 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $user = User::findOrFail($id);
+//        $permissions = Permission::oldest()->lists('name','id');
+        return view('users.edit', compact('user'));
 	}
 
 	/**
