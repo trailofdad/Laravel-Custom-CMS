@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css"/>
     <link rel="stylesheet" href="/public/css/bootstrap.min.css"/>
-    /home/inet2005/code/Final Project/inet2005-fc/Final_Project/vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/css/bootstrap.min.css
+        <link href="{{ url('vendor/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
 
 </head>
 
@@ -30,6 +30,15 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
 @yield('footer')
+<script type="text/javascript">
+    var root = '{{url("/")}}';
+</script>
+<script language="JavaScript" type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script>
+<script language="JavaScript" type="text/javascript" src='{{ url("vendor/selectize/js/standalone/selectize.min.js") }}'></script>
+<script language="JavaScript" type="text/javascript" src='{{ url("js/main.js") }}'></script>
+@yield('scripts')
 
 </body>
+
+
 </html>

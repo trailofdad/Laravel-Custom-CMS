@@ -29,3 +29,6 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('api/search', 'ApiSearchController@index');
+
