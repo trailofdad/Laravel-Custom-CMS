@@ -1,9 +1,3 @@
-<head>
-<link href="{{ url('vendor/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
-    <script type="text/javascript" src='{{ url("js/main.js") }}'></script>
-    <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script>
-    <script type="text/javascript" src='{{ url("vendor/selectize/js/standalone/selectize.min.js") }}'></script>
-</head>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -42,16 +36,10 @@
                         <li><a href="/pages/create">Create Page</a></li>
                     </ul>
             </ul>
-            {{--<ul class="nav navbar-nav navbar-right">--}}
-               {{--<li><a href="#">Admin Login</a></li>--}}
-            <select id="searchbox" name="q" placeholder="Search products or categories..." class="form-control"></select>
+            <ul class="nav navbar-nav navbar-right">
+                <li><select id="searchbox" name="q" placeholder="Search products or categories..." class="form-control"></select></li>
 
-            // Activate Selectize
-            <script>
-                $(document).ready(function(){
-                    $('#searchbox').selectize();
-                });
-            </script>
+
 
             </ul>
         </div><!--/.nav-collapse -->
@@ -64,5 +52,9 @@
         selector: 'textarea#tiny' // change this value according to your HTML
     });</script>
 
-
-
+// Activate Selectize
+<script>
+    $(document).ready(function(){
+        $('#searchbox').selectize();
+    });
+</script>
