@@ -13,7 +13,8 @@ class article extends Model {
         'created_on',
         'creation_date',
         'modified_by',
-        'updated_at'
+        'updated_at',
+        'user_id' //temp
     ];
 
     protected $dates = ['creation_date'];
@@ -37,6 +38,13 @@ class article extends Model {
     public function getPublishedAtAttribute($date)
     {
         return new Carbon($date);
+    }
+
+
+    //article is owned to user
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
     
 }

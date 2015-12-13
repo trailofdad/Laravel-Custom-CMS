@@ -20,6 +20,9 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers;
 
+    // This is where we set the redirect when a user is created
+    protected $redirectTo = '/articles';
+
 	/**
 	 * Create a new authentication controller instance.
 	 *

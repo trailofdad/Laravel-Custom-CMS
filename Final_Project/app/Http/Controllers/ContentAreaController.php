@@ -13,6 +13,11 @@ class ContentAreaController extends Controller {
 	 *
 	 * @return Response
 	 */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'index']);
+    }
+
 	public function index()
 	{
         $contentAreas = ContentArea::get()->all();

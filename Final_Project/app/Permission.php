@@ -2,11 +2,15 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class permission extends Model {
+class Permission extends Model {
 
-    protected $fillable = [
+//    protected $fillable = [
+//
+//        'name'
+//    ];
 
-        'name'
-    ];
-
+    public function User()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 }

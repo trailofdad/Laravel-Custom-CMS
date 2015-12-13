@@ -1,31 +1,31 @@
 <div class="form-group">
     {!! Form::label('FirstName', 'First Name:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    {!! Form::text('FirstName', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('LastName', 'Last Name:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    {!! Form::text('LastName', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('email', 'Email:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('password', 'Enter Password:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    {!! Form::password('password', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('Confirm Password', 'Confirm Password:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    {!! Form::password('password_confirmation', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('description', 'Description:') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    {!! Form::label('permissions', 'Permissions:') !!}
+    {!! Form::select('permission_ids',$permissionsArray, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

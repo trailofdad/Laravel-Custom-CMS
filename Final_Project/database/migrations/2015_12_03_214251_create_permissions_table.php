@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreatePermissionsTable extends Migration {
 
@@ -10,23 +11,34 @@ class CreatePermissionsTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::create('permissions', function(Blueprint $table)
-		{
-			$table->increments('id');
-			$table->timestamps();
-		});
-	}
+    public function up()
+    {
+        Schema::create('permissions', function(Blueprint $table)
+        {
+            $table->increments('permission_id');
+            $table->string('permission_description');
+            $table->timestamps();
+        });
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('permissions');
-	}
+        Schema::create('users_permissions', function(Blueprint $table)
+        {
+            $table->integer('user_id')->unsigned()->index()->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
 
+            $table->integer('permission_id')->unsigned()->index();
+            $table->foreign('permission_id')->references('permission_id')->on('permissions')->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('permissions');
+        Schema::drop('users_permissions');
+    }
 }

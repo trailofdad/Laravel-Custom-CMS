@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateArticlesTable extends Migration {
 
@@ -15,10 +16,15 @@ class CreateArticlesTable extends Migration {
 		Schema::create('articles', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->integer('user_id')->unsigned();
 			$table->timestamps('created_at');
             $table->text('description');
             $table->string('title');
             $table->string('html');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
 		});
 	}
 
