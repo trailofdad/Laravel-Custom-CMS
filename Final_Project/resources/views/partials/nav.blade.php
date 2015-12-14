@@ -44,19 +44,21 @@
             </ul>
             {{--<ul class="nav navbar-nav navbar-right">--}}
                {{--<li><a href="#">Admin Login</a></li>--}}
-            <select id="searchbox" name="q" placeholder="Search products or categories..." class="form-control"></select>
+            {{--<select id="searchbox" name="q" placeholder="Search products or categories..." class="form-control"></select>--}}
 
-            // Activate Selectize
-            <script>
-                $(document).ready(function(){
-                    $('#searchbox').selectize();
-                });
-            </script>
+            {{--// Activate Selectize--}}
+            {{--<script>--}}
+                {{--$(document).ready(function(){--}}
+                    {{--$('#searchbox').selectize();--}}
+                {{--});--}}
+            {{--</script>--}}
 
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+<br/>
+<br/>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>
 

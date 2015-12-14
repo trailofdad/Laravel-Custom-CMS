@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Permission;
 use App\User;
 use Request;
@@ -41,21 +42,21 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(UserRequest $request)
 	{
 //        User::create(Request::all());
 //        return redirect('users');
-
-        $user = User::create(Request::all());
-        $user->FirstName = $request->input('FirstName');
-        $user->LastName = $request->input('LastName');
-        $user->email = $request->input('email');
-        $password = bcrypt($request->input('password'));
-        $user->password = $password;
-        $user->save();
+        $request['password'] = bcrypt($request->input('password'));
+        User::create($request->all());
+//        $user->FirstName = $request->input('FirstName');
+//        $user->LastName = $request->input('LastName');
+//        $user->email = $request->input('email');
+//
+//        $user->password = $password;
+//        $user->save();
 
         if ($request->input('permission_ids') != null) {
-            $user->permission()->attach($request->input('permission_ids'));
+            User::all()->last()->permission()->attach($request->input('permission_ids'));
         }
         return redirect('users');
 	}
@@ -80,9 +81,10 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
+        $permissionsArray = Permission::lists('permission_id');
         $user = User::findOrFail($id);
 //        $permissions = Permission::oldest()->lists('name','id');
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'permissionsArray'));
 	}
 
 	/**
@@ -91,13 +93,15 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UserRequest $request)
 	{
-		//
+        $request['password'] = bcrypt($request->input('password'));
+        $request->update(Request::all());
+        return view('users.index');
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the specified resource from storage
 	 *
 	 * @param  int  $id
 	 * @return Response
