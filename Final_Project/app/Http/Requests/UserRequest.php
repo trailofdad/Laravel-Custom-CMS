@@ -14,7 +14,13 @@ class UserRequest extends Request {
 		return true;
 	}
 
-	/**
+    public function update()
+    {
+        return true;
+    }
+
+
+    /**
 	 * Get the validation rules that apply to the request.
 	 *
 	 * @return array

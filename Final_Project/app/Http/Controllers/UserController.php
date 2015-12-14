@@ -97,7 +97,7 @@ class UserController extends Controller {
 	{
         $request['password'] = bcrypt($request->input('password'));
         $request->update(Request::all());
-        return view('users.index');
+        return redirect('users');
 	}//there is a problem here that needs to be fixed, need to make sure permission is proper and then we can build logic and middle wear to
     //restrict access. show might be tosssed.
 
