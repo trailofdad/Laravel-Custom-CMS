@@ -20,15 +20,15 @@ class adminMiddleware {
 	{
 		if (!Auth::guest()) {
 
-            $user = $request->user();
-            $url = $request->path();
+            $user = $request ->user();
+            $url = $request ->path();
             dd ($user->permissions);
-            if ($url == 'users' && $user->isAdministration()) {
+            if ($url == 'users' && $user -> isAdministration()) {
                 return $next($request);
 
-            }   elseif ($url != 'articles' && $url != 'users' && $user->isEditor()) {
+            }   elseif ($url != 'articles' && $url != 'users' && $user ->isEditor()) {
                 return $next($request); }
-                elseif ($url == 'articles' && ($user->isWriter() || $user->isEditor())) {
+                elseif ($url == 'articles' && ($user->isWriter() || $user ->isEditor() || $user->isAdministration())) {
                 return $next($request);}
             else {
                 return Redirect::to(URL::previous());
