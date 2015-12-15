@@ -13,7 +13,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Christian/Findlay Rule!</a>
+            <a class="navbar-brand" href="/">Final Project</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -41,6 +41,17 @@
                         <li><a href="/pages">View Pages</a></li>
                         <li><a href="/pages/create">Create Page</a></li>
                     </ul>
+                {{--Need if statement for if Admin how this--}}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/users">Users<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/users">View & Edit</a></li>
+                        <li><a href="/users/create">Create User</a></li>
+                    </ul>
+            </ul>
+            {{--insert if statement for if Auth show this--}}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth/logout">Logout</a></li>
             </ul>
             {{--<ul class="nav navbar-nav navbar-right">--}}
                {{--<li><a href="#">Admin Login</a></li>--}}

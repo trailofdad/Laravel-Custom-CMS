@@ -57,6 +57,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return false;
     }
 
+
     public function isEditor() {
         $permissions=$this->permissions();
         foreach ($permissions as $permission){
