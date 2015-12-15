@@ -15,7 +15,7 @@ class ContentAreaController extends Controller {
 	 */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'index']);
+        $this->middleware('admin');
     }
 
 	public function index()

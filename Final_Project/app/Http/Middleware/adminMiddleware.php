@@ -7,6 +7,8 @@ use URL;
 
 class adminMiddleware {
 
+//    realized that we may need to build the methods to show the relationships in permissions to users but can't think how to do it
+// right now.
 	/**
 	 * Handle an incoming request.
 	 *
