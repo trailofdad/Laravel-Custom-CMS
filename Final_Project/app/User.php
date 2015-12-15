@@ -41,9 +41,42 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\article');
     }
 
-    public function permission()
+    public function permissions()
     {
         return $this->belongsToMany('App\Permission', 'users_permissions')->withTimestamps();
     }
 
+    public function isAdministration() {
+        $permissions=$this->permissions();
+        foreach ($permissions as $permission){
+            if ($permission -> permission_description == "administrator"){
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public function isEditor() {
+        $permissions=$this->permissions();
+        foreach ($permissions as $permission){
+            if ($permission -> permission_description == "editor"){
+                return true;
+            }
+
+        }
+        return false;
+
+    }
+    public function isWriter() {
+        $permissions=$this->permissions();
+        foreach ($permissions as $permission){
+            if ($permission -> permission_description == "writer"){
+                return true;
+            }
+
+        }
+        return false;
+
+    }
 }

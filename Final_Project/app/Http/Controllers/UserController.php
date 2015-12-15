@@ -81,9 +81,9 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-        $permissionsArray = Permission::lists('permission_id');
+        $permissionsArray = Permission::lists('permission_description','permission_id');
         $user = User::findOrFail($id);
-//        $permissions = Permission::oldest()->lists('name','id');
+     //        $permissions = Permission::oldest()->lists('name','id');
         return view('users.edit', compact('user', 'permissionsArray'));
 	}
 

@@ -8,7 +8,7 @@
 
     {!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->id]]) !!}
 
-    @include('users.form',['submitButtonText' => 'Update User'])
+    @include('users.form',['submitButtonText' => 'Update User', 'permissionsArray'=>$permissionsArray])
 
     {!! Form::close() !!}
 

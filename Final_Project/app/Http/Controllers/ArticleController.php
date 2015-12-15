@@ -19,7 +19,7 @@ class ArticleController extends Controller {
 	 */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'index']);
+        $this->middleware('admin');
     }
 
 	public function index()
@@ -81,7 +81,6 @@ class ArticleController extends Controller {
         $pages = Page::oldest()->lists('name','id');
         $contentAreas= ContentArea::oldest()->lists('name','id');
         return view('articles.edit', compact('article','pages','contentAreas'));
-
 	}
 
 	/**

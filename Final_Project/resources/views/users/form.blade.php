@@ -23,9 +23,10 @@
     {!! Form::password('password_confirmation', null, ['class' => 'form-control']) !!}
 </div>
 
+
 <div class="form-group">
     {!! Form::label('permissions', 'Permissions:') !!}
-    {!! Form::select('permission_ids',$permissionsArray, null, ['class' => 'form-control']) !!}
+    {!! Form::select('permission_ids', $permissionsArray, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
