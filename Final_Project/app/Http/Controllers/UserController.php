@@ -32,7 +32,7 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-        $permissionsArray = Permission::lists('permission_id');
+        $permissionsArray = Permission::lists('permission_description','permission_id');
 
         return view('users.create',compact('permissionsArray'));
 	}
