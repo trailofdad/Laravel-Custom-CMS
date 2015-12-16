@@ -13,7 +13,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Final Project</a>
+
+
+            <a class="navbar-brand" href="/">Welcome @if(Auth::user()) {{ Auth::user()->FirstName }} @endif</a>
+
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
