@@ -20,7 +20,7 @@ class CreatePermissionsTable extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('users_permissions', function(Blueprint $table)
+        Schema::create('permission_user', function(Blueprint $table)
         {
             $table->integer('user_id')->unsigned()->index()->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
