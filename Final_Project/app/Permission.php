@@ -11,6 +11,6 @@ class Permission extends Model {
 
     public function User()
     {
-        return $this->belongsToMany('App\User')->withTimestamps();
+        return $this->belongsToMany('App\User');
     }
 }

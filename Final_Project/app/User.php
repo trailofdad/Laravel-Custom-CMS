@@ -26,30 +26,47 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'FirstName',
         'LastName',
         'email',
-        'password'];
+        'password',
+        'created_by',
+        'modified_by',
+    ];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token'];
 
-    //A user can have many articles
     public function articles()
     {
-        return $this->hasMany('App\article');
+        return $this->hasMany('App\Article', 'created_by');
+    }
+
+    public function pages()
+    {
+        return $this->hasMany('App\Page', 'created_by');
+    }
+
+    public function users()
+    {
+        return $this->hasMany('App\User', 'created_by');
+    }
+
+    public function templates()
+    {
+        return $this->hasMany('App\CSS_Template', 'created_by');
+    }
+
+    public function areas()
+    {
+        return $this->hasMany('App\Content_Area', 'created_by');
     }
 
     public function permissions()
     {
-        return $this->belongsToMany('App\Permission', 'users_permissions')->withTimestamps();
+        return $this->belongsToMany('App\Permission');
     }
 
     public function isAdministration() {
         $permissions=$this->permissions();
         foreach ($permissions as $permission){
-            if ($permission -> permission_description == "administrator"){
+            if ($permission -> permission_description == "Administrator"){
                 return true;
             }
 
@@ -61,7 +78,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function isEditor() {
         $permissions=$this->permissions();
         foreach ($permissions as $permission){
-            if ($permission -> permission_description == "editor"){
+            if ($permission -> permission_description == "Editor"){
                 return true;
             }
 
@@ -72,7 +89,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function isWriter() {
         $permissions=$this->permissions();
         foreach ($permissions as $permission){
-            if ($permission -> permission_description == "writer"){
+            if ($permission -> permission_description == "Writer"){
                 return true;
             }
 

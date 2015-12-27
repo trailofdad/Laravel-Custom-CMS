@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Permission;
+use App\Permission_User;
 use App\User;
 use Request;
 
@@ -70,6 +71,9 @@ class UserController extends Controller {
 	public function show($id)
 	{
         $users = User::findOrFail($id);
+
+        $users->created_by = User::where('id', $users->created_by)->get()->first()->first_name;
+        $users->modified_by = User::where('id', $users->modified_by)->get()->first()->first_name;
         return view('users.show', compact('users'));
 	}
 
@@ -93,10 +97,21 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(UserRequest $request)
+	public function update($id, UserRequest $request)
 	{
+        $request['modified_by'] = Auth::id();
         $request['password'] = bcrypt($request->input('password'));
-        $request->update(Request::all());
+        $permissions = $request->get('permissions');
+        Permission_User::where('user_id', $id)->delete();
+        foreach ($permissions as $permission) {
+            Permission_User::create([
+                'user_id' => $id,
+                'permission_id' => $permission,
+            ]);
+        }
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
         return redirect('users');
 	}//there is a problem here that needs to be fixed, need to make sure permission is proper and then we can build logic and middle wear to
     //restrict access. show might be tosssed.

@@ -10,10 +10,13 @@ class article extends Model {
         'title',
         'description',
         'html',
+        'page',
+        'area',
         'created_on',
         'creation_date',
         'modified_by',
-        'updated_at',
+        'created_by',
+        'modified_at',
         'user_id' //temp
     ];
 

@@ -19,6 +19,13 @@ class CreateContentAreasTable extends Migration {
             $table->text('description');
             $table->string('name');
             $table->string('alias');
+            $table->integer('created_by');
+            $table->integer('modified_by');
+            $table->rememberToken();
+
+            //fk
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('modified_by')->references('id')->on('users');
 		});
 	}
 

@@ -48,6 +48,7 @@ class ArticleController extends Controller {
      */
 	public function store(ArticleRequest $request)
 	{
+        $request['modified_by'] = Auth::id();
         $article = new Article($request->all());
 
         Auth::user()->articles()->save($article);
@@ -65,6 +66,9 @@ class ArticleController extends Controller {
 	public function show($id)
 	{
         $article = Article::findOrFail($id);
+        $article->created_by = User::where('id', $article->created_by)->get()->first()->first_name;
+        $article->modified_by = User::where('id', $article->modified_by)->get()->first()->first_name;
+        $article->area = ContentArea::where('id', $article->area)->get()->first()->name;
         return view('articles.show', compact('article'));
 
 	}
@@ -90,7 +94,7 @@ class ArticleController extends Controller {
 	 * @return Response
 	 */
 	public function update($id)
-	{
+	{   $request['modified_by'] = Auth::id();
         $article = Article::findOrFail($id);
         $article->update(Request::all());
         return redirect('articles');

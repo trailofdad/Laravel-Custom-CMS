@@ -17,9 +17,16 @@ class CreateTemplatesTable extends Migration {
 			$table->increments('id');
             $table->timestamps('created_at');
             $table->text('description');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('active');
             $table->string('css');
+            $table->integer('created_by');
+            $table->integer('modified_by');
+            $table->rememberToken();
+
+            //fk
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('modified_by')->references('id')->on('users');
 		});
 	}
 

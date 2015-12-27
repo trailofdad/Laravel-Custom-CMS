@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class template extends Model {
 
+    protected $table = 'Templates';
+
     protected $fillable = [
 
         'name',

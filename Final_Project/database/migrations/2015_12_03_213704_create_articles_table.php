@@ -21,10 +21,17 @@ class CreateArticlesTable extends Migration {
             $table->text('description');
             $table->string('title');
             $table->string('html');
+            $table->integer('page');
+            $table->integer('area');
+            $table->integer('created_by');
+            $table->integer('modified_by');
+            $table->rememberToken();
 
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
+//fk
+            $table->foreign('page')->references('id')->on('pages');
+            $table->foreign('area')->references('id')->on('content_areas');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('modified_by')->references('id')->on('users');
 		});
 	}
 
