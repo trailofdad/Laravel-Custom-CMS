@@ -18,9 +18,8 @@ class CreateContentAreasTable extends Migration {
             $table->timestamps('created_at');
             $table->text('description');
             $table->string('name');
-            $table->string('alias');
-            $table->integer('created_by');
-            $table->integer('modified_by');
+            $table->integer('created_by')->nullable();
+            $table->integer('modified_by')->nullable();
             $table->rememberToken();
 
             //fk

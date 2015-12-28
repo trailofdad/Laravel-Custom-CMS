@@ -23,8 +23,8 @@ class CreateArticlesTable extends Migration {
             $table->string('html');
             $table->integer('page');
             $table->integer('area');
-            $table->integer('created_by');
-            $table->integer('modified_by');
+            $table->integer('created_by')->nullable();
+            $table->integer('modified_by')->nullable();
             $table->rememberToken();
 
 //fk

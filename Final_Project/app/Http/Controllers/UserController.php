@@ -56,9 +56,9 @@ class UserController extends Controller {
 //        $user->password = $password;
 //        $user->save();
 
-        if ($request->input('permission_ids') != null) {
-            User::all()->last()->permission()->attach($request->input('permission_ids'));
-        }
+//        if ($request->input('permission_ids') != null) {
+//            User::all()->last()->permission()->attach($request->input('permission_ids'));
+//        }
         return redirect('users');
 	}
 

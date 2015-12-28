@@ -18,8 +18,8 @@ class CreatePagesTable extends Migration {
             $table->string('name');
             $table->string('alias');
             $table->text('description');
-            $table->integer('created_by');
-            $table->integer('modified_by');
+            $table->integer('created_by')->nullable();
+            $table->integer('modified_by')->nullable();
             $table->timestamps('created_at');
 //fk
             $table->foreign('created_by')->references('id')->on('users');
