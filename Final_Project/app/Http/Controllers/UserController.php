@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Permission;
 use App\Permission_User;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Request;
 
 class UserController extends Controller {
@@ -72,8 +73,8 @@ class UserController extends Controller {
 	{
         $users = User::findOrFail($id);
 
-        $users->created_by = User::where('id', $users->created_by)->get()->first()->first_name;
-        $users->modified_by = User::where('id', $users->modified_by)->get()->first()->first_name;
+//        $users->created_by = User::where('id', $users->created_by)->get()->first()->first_name;
+//        $users->modified_by = User::where('id', $users->modified_by)->get()->first()->first_name;
         return view('users.show', compact('users'));
 	}
 
@@ -103,12 +104,13 @@ class UserController extends Controller {
         $request['password'] = bcrypt($request->input('password'));
         $permissions = $request->get('permissions');
         Permission_User::where('user_id', $id)->delete();
-        foreach ($permissions as $permission) {
-            Permission_User::create([
-                'user_id' => $id,
-                'permission_id' => $permission,
-            ]);
-        }
+//        foreach ($permissions as $permission) {
+//            Permission_User::create([
+//                'user_id' => $id,
+//                'permission_id' =
+// $permission,
+//            ]);
+//        }
         $user = User::findOrFail($id);
         $user->update($request->all());
 
