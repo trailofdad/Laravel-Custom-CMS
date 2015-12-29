@@ -22,7 +22,6 @@ class adminMiddleware {
 
             $user = $request->user();
             $url = $request->path();
-            dd ($user->permissions);
             if ($url == 'users' && $user-> isAdministration()) {
                 return $next($request);
 

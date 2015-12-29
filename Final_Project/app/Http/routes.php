@@ -25,10 +25,12 @@ Route::resource('templates', 'TemplateController');
 
 Route::resource('users', 'UserController');
 
+Route::get('api/search', 'ApiSearchController@index');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('api/search', 'ApiSearchController@index');
+
 
