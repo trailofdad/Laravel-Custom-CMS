@@ -64,9 +64,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function isAdministration() {
-        $permissions=$this->permissions();
+        $permissions=$this->permissions()->get();
         foreach ($permissions as $permission){
-            if ($permission -> permission_description == "Administrator"){
+            if ($permission -> permission_description == "Administrator" ){
                 return true;
             }
 
@@ -76,7 +76,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
     public function isEditor() {
-        $permissions=$this->permissions();
+        $permissions=$this->permissions()->get();
         foreach ($permissions as $permission){
             if ($permission -> permission_description == "Editor"){
                 return true;
@@ -87,7 +87,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     }
     public function isWriter() {
-        $permissions=$this->permissions();
+        $permissions=$this->permissions()->get();
         foreach ($permissions as $permission){
             if ($permission -> permission_description == "Writer"){
                 return true;

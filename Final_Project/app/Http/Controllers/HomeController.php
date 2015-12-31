@@ -18,10 +18,10 @@ class HomeController extends Controller {
 	 *
 	 * @return void
 	 */
-//	public function __construct()
-//	{
-//		$this->middleware('admin');
-//	}
+	public function __construct()
+	{
+		$this->middleware('admin');
+	}
 
 	/**
 	 * Show the application dashboard to the user.

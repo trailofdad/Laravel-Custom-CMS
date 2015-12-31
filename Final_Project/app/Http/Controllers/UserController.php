@@ -12,10 +12,10 @@ use Request;
 class UserController extends Controller {
 
 
-//    public function __construct()
-//{
-//    $this->middleware('admin');
-//}
+    public function __construct()
+{
+    $this->middleware('admin');
+}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -46,22 +46,20 @@ class UserController extends Controller {
 	 */
 	public function store(UserRequest $request)
 	{
-//        User::create(Request::all());
-//        return redirect('users');
+//        dd ($request);
+        $request['modified_by'] = Auth::id();
         $request['password'] = bcrypt($request->input('password'));
         User::create($request->all());
-//        $user->FirstName = $request->input('FirstName');
-//        $user->LastName = $request->input('LastName');
-//        $user->email = $request->input('email');
-//
-//        $user->password = $password;
-//        $user->save();
+        $permissions = $request->get('permission_ids');
+//        dd ($permissions);
+        if ($permissions != null) {
+            foreach ($permissions as $permission) {
+                Permission_User::create(['user_id' => User::all()->last()->id, 'permission_id' => $permission]);
+            }
+        }
 
-//        if ($request->input('permission_ids') != null) {
-//            User::all()->last()->permission()->attach($request->input('permission_ids'));
-//        }
         return redirect('users');
-	}
+       	}
 
 	/**
 	 * Display the specified resource.
@@ -73,8 +71,8 @@ class UserController extends Controller {
 	{
         $users = User::findOrFail($id);
 
-//        $users->created_by = User::where('id', $users->created_by)->get()->first()->first_name;
-//        $users->modified_by = User::where('id', $users->modified_by)->get()->first()->first_name;
+        $users->created_by = User::where('id', $users->created_by)->get()->first()->first_name;
+        $users->modified_by = User::where('id', $users->modified_by)->get()->first()->first_name;
         return view('users.show', compact('users'));
 	}
 
@@ -89,7 +87,8 @@ class UserController extends Controller {
         $permissionsArray = Permission::lists('permission_description','permission_id');
         $user = User::findOrFail($id);
      //        $permissions = Permission::oldest()->lists('name','id');
-        return view('users.edit', compact('user', 'permissionsArray'));
+        $activePermissions = Permission_User::where('user_id', $id)->lists('permission_id');
+        return view('users.edit', compact('user', 'permissionsArray','activePermissions', 'style'));
 	}
 
 	/**
@@ -102,15 +101,16 @@ class UserController extends Controller {
 	{
         $request['modified_by'] = Auth::id();
         $request['password'] = bcrypt($request->input('password'));
-        $permissions = $request->get('permissions');
+        $permissions = $request->get('permission_ids');
         Permission_User::where('user_id', $id)->delete();
-//        foreach ($permissions as $permission) {
-//            Permission_User::create([
-//                'user_id' => $id,
-//                'permission_id' =
-// $permission,
-//            ]);
-//        }
+        if ($permissions != null) {
+        foreach ($permissions as $permission) {
+            Permission_User::create([
+                'user_id' => $id,
+                'permission_id' =>
+ $permission,
+            ]);}
+        }
         $user = User::findOrFail($id);
         $user->update($request->all());
 

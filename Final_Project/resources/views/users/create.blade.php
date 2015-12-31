@@ -8,7 +8,8 @@
 
     {!! Form::model($user = new \App\User, ['url' => 'users']) !!}
 
-    @include('users.form', ['submitButtonText' => 'Create User'])
+    @include('users.form', ['submitButtonText' => 'Create User',  'permissionsArray' => $permissionsArray,
+                                    'activePermissions' => null])
 
     {!! Form::close() !!}
 
