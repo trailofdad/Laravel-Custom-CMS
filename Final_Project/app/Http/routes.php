@@ -27,6 +27,10 @@ Route::resource('users', 'UserController');
 
 Route::get('api/search', 'ApiSearchController@index');
 
+Route::get('frontEnd/{page}/{article}', 'FrontEndController@page');
+Route::resource('frontEnd', 'FrontEndController');
+
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
