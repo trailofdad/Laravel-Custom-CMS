@@ -27,6 +27,7 @@ return [
     */
 
     'default' => 'sqlite',
+//    'default' => 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -51,13 +52,14 @@ return [
             'database' => storage_path().'/database.sqlite',
             'prefix'   => '',
         ],
+//can do php migrate and then php refresh seed and it should create it.
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'forge'),
-            'username'  => env('DB_USERNAME', 'forge'),
-            'password'  => env('DB_PASSWORD', ''),
+            'host'      => 'localhost',
+            'database'  => 'laravel',
+            'username'  => 'root',
+            'password'  => 'inet2005',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
