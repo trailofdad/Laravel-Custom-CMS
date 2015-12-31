@@ -10,6 +10,7 @@ class contentArea extends Model {
 
         'name',
         'description',
+        'orderBy',
         'created_by',
         'modified_by',
         'display_order'
