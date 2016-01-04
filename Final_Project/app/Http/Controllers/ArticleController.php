@@ -48,7 +48,7 @@ class ArticleController extends Controller {
      */
 	public function store(ArticleRequest $request)
 	{
-        $request['modified_by'] = Auth::id();
+        $request['created_by'] = Auth::id();
         $article = new Article($request->all());
 
         Auth::user()->articles()->save($article);
@@ -81,6 +81,7 @@ class ArticleController extends Controller {
 	 */
 	public function edit($id)
 	{
+        $request['modified_by'] = Auth::id();
         $article = Article::findOrFail($id);
         $pages = Page::oldest()->lists('name','id');
         $contentAreas= ContentArea::oldest()->lists('name','id');
@@ -93,8 +94,9 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{   $request['modified_by'] = Auth::id();
+	public function update($id, ArticleRequest $request)
+	{
+        $request['modified_by'] = Auth::id();
         $article = Article::findOrFail($id);
         $article->update(Request::all());
         \Session::flash('flash_message', 'Article Edited');

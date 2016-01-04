@@ -46,8 +46,8 @@ class UserController extends Controller {
 	 */
 	public function store(UserRequest $request)
 	{
-//        dd ($request);
-        $request['modified_by'] = Auth::id();
+//
+        $request['created_by'] = Auth::id();
         $request['password'] = bcrypt($request->input('password'));
         User::create($request->all());
         $permissions = $request->get('permission_ids');

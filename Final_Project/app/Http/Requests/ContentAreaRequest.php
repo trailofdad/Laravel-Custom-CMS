@@ -11,9 +11,13 @@ class ContentAreaRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
+    public function update()
+    {
+        return true;
+    }
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -22,7 +26,9 @@ class ContentAreaRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
+            'name' => 'required',
+            'orderBy' => 'required',
+            'description' => 'required'
 		];
 	}
 

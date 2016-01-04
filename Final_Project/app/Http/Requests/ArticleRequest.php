@@ -14,6 +14,11 @@ class ArticleRequest extends Request {
 		return true;
 	}
 
+    public function update()
+    {
+        return true;
+    }
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -22,8 +27,9 @@ class ArticleRequest extends Request {
 	public function rules()
 	{
 		return [
-//            'title' => 'required|min:3',
-//            'html' => 'required'
+            'title' => 'required|min:3',
+            'html' => 'required',
+            'description' => 'required'
 
 		];
 	}

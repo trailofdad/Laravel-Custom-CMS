@@ -2,8 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TemplateRequest;
 use Request;
 use App\Template;
+use Auth;
 
 
 class TemplateController extends Controller {
@@ -39,8 +41,9 @@ class TemplateController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(TemplateRequest $request)
 	{
+        $request['created_by'] = Auth::id();
         Template::create(Request::all());
         \Session::flash('flash_message', 'Template Created');
         return redirect('templates');
@@ -76,8 +79,9 @@ class TemplateController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, TemplateRequest $request)
 	{
+        $request['modified_by'] = Auth::id();
         $template = Template::findOrFail($id);
         $template->update(Request::all());
         \Session::flash('flash_message', 'Template Updated');

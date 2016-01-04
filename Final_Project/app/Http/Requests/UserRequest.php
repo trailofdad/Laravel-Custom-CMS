@@ -29,7 +29,10 @@ class UserRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
+            'FirstName'=> 'required',
+            'LastName'=> 'required',
+            'email'=> 'required|email',
+            'password'=> 'required'
 		];
 	}
 

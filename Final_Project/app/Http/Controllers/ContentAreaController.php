@@ -3,6 +3,8 @@
 use App\ContentArea;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContentAreaRequest;
+use Illuminate\Support\Facades\Auth;
 use Request;
 
 
@@ -39,8 +41,9 @@ class ContentAreaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(ContentAreaRequest $request)
 	{
+        $request['created_by'] = Auth::id();
         ContentArea::create(Request::all());
         \Session::flash('flash_message', 'Content Area Created');
         return redirect('contentAreas');
@@ -76,8 +79,9 @@ class ContentAreaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, ContentAreaRequest $request)
 	{
+        $request['modified_by'] = Auth::id();
         $contentArea = ContentArea::findOrFail($id);
         $contentArea->update(Request::all());
         \Session::flash('flash_message', 'Content Area Updated');
