@@ -4,6 +4,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('alias', 'Alias:') !!}
+    {!! Form::text('alias', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('orderBy', 'Order By:') !!}
     {!! Form::input('number','orderBy', null, ['class' => 'form-control']) !!}
 </div>

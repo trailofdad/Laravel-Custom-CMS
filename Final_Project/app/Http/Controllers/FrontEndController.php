@@ -101,7 +101,7 @@ class FrontEndController extends Controller {
      */
     public function page($page, $id)
     {
-        echo 'got here';
+        echo 'page method in front end controller';
     }
 
 

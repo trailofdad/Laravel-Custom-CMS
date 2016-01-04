@@ -20,7 +20,6 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/frontEnd') }}">Home</a></li>
                 @foreach($pages as $page)
                     <li><a href="{{ url('/frontEnd/' . $page->alias) }}">{{ $page->name }}</a></li>
                 @endforeach

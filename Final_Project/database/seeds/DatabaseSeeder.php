@@ -172,6 +172,7 @@ class AreaTableSeeder extends Seeder
 
         ContentArea::create([
             'name' => 'Header',
+            'alias' => 'header',
             'orderBy' => '0',
             'description' => 'The header area for the website',
             'created_by' => 2,
@@ -180,6 +181,7 @@ class AreaTableSeeder extends Seeder
 
         ContentArea::create([
             'name' => 'Main',
+            'alias' => 'main',
             'orderBy' => '1',
             'description' => 'The main area for the website',
             'created_by' => 2,
@@ -188,6 +190,7 @@ class AreaTableSeeder extends Seeder
 
         ContentArea::create([
             'name' => 'Footer',
+            'alias' => 'footer',
             'orderBy' => '2',
             'description' => 'The footer area for the website',
             'created_by' => 2,

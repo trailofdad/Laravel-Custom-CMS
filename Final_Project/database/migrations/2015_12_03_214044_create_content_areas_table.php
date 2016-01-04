@@ -19,6 +19,7 @@ class CreateContentAreasTable extends Migration {
             $table->text('description');
             $table->integer('orderBy')->unsigned();
             $table->string('name');
+            $table->string('alias');
             $table->integer('created_by')->nullable();
             $table->integer('modified_by')->nullable();
             $table->rememberToken();

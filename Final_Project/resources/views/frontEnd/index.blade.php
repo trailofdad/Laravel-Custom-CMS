@@ -2,7 +2,7 @@
 
 @section('content')
     @foreach($contentAreas as $area)
-        <section class="row {{ $area->name }}">
+        <section id="{{ $area->alias }}">
             @foreach($pageContent as $article)
                 @if ($article->area == $area->id)
                     @include('partials.siteArea', ['article' => $article, 'contentArea' => $area, 'page' => $page])
