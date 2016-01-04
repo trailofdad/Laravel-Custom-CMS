@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e7e2c96-f818-4d7b-875c-ce92db2130df" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/ArticleRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/ArticleRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContentAreaController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContentAreaController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/ContentAreaRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/ContentAreaRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/PageRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/PageRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TemplateController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TemplateController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Final_Project.iws" />
@@ -45,8 +36,8 @@
           <file leaf-file-name="ContentAreaController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContentAreaController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7607973" vertical-offset="491" max-vertical-offset="1926">
-                  <caret line="45" column="44" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="44" />
+                <state vertical-scroll-proportion="0.40199336" vertical-offset="599" max-vertical-offset="1926">
+                  <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
@@ -98,10 +89,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="ArticleRequest.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ArticleRequest.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Requests/ArticleRequest.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.73220336" vertical-offset="0" max-vertical-offset="774">
+                <state vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="774">
                   <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
                   <folding />
                 </state>
@@ -121,17 +112,17 @@
           <file leaf-file-name="UserRequest.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-2.6666667" vertical-offset="216" max-vertical-offset="810">
+                <state vertical-scroll-proportion="-7.5925927" vertical-offset="83" max-vertical-offset="810">
                   <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="19" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-14.0" vertical-offset="378" max-vertical-offset="2484">
+                <state vertical-scroll-proportion="0.5744681" vertical-offset="594" max-vertical-offset="2484">
                   <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="44" />
                   <folding />
                 </state>
@@ -917,7 +908,19 @@
       <option name="project" value="LOCAL" />
       <updated>1451939216492</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="All success messages added for update, create and delete/">
+      <created>1451942747929</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1451942747929</updated>
+    </task>
+    <task id="LOCAL-00035" summary="All success messages added for update, create and delete/">
+      <created>1451942790120</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1451942790120</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1368,26 +1371,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.0" vertical-offset="378" max-vertical-offset="2484">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ArticleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-60.0" vertical-offset="0" max-vertical-offset="2268">
-          <caret line="98" column="8" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6666667" vertical-offset="216" max-vertical-offset="810">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="19" selection-end-column="5" />
+        <state vertical-scroll-proportion="-29.333334" vertical-offset="0" max-vertical-offset="2268">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1402,7 +1389,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/ArticleRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73220336" vertical-offset="0" max-vertical-offset="774">
+        <state vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="774">
           <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
           <folding />
         </state>
@@ -1434,8 +1421,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ContentAreaController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7607973" vertical-offset="491" max-vertical-offset="1926">
-          <caret line="45" column="44" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.40199336" vertical-offset="599" max-vertical-offset="1926">
+          <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5925927" vertical-offset="83" max-vertical-offset="810">
+          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5744681" vertical-offset="594" max-vertical-offset="2484">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="44" />
           <folding />
         </state>
       </provider>
