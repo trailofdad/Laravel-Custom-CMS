@@ -42,6 +42,7 @@ class TemplateController extends Controller {
 	public function store()
 	{
         Template::create(Request::all());
+        \Session::flash('flash_message', 'Template Created');
         return redirect('templates');
 	}
 
@@ -79,6 +80,7 @@ class TemplateController extends Controller {
 	{
         $template = Template::findOrFail($id);
         $template->update(Request::all());
+        \Session::flash('flash_message', 'Template Updated');
         return redirect('templates');
 	}
 
@@ -93,8 +95,8 @@ class TemplateController extends Controller {
         $template = Template::findOrFail($id);
 
         $template->delete();
-
-        return redirect()->route('$templates.index');
+        \Session::flash('flash_message', 'Template Deleted');
+        return redirect()->route('templates.index');
 	}
 
 }

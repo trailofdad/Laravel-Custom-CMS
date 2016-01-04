@@ -42,6 +42,7 @@ class ContentAreaController extends Controller {
 	public function store()
 	{
         ContentArea::create(Request::all());
+        \Session::flash('flash_message', 'Content Area Created');
         return redirect('contentAreas');
 	}
 
@@ -79,6 +80,7 @@ class ContentAreaController extends Controller {
 	{
         $contentArea = ContentArea::findOrFail($id);
         $contentArea->update(Request::all());
+        \Session::flash('flash_message', 'Content Area Updated');
         return redirect('contentAreas');
 	}
 
@@ -93,7 +95,7 @@ class ContentAreaController extends Controller {
         $contentArea = ContentArea::findOrFail($id);
 
         $contentArea->delete();
-
+        \Session::flash('flash_message', 'Content Area Deleted');
         return redirect()->route('contentAreas.index');
 	}
 

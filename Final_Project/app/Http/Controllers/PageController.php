@@ -44,6 +44,7 @@ class PageController extends Controller {
 	public function store()
 	{
         Page::create(Request::all());
+        \Session::flash('flash_message', 'Page Created');
         return redirect('pages');
 	}
 
@@ -82,6 +83,7 @@ class PageController extends Controller {
 	{
         $page = Page::findOrFail($id);
         $page->update(Request::all());
+        \Session::flash('flash_message', 'Page Updated');
         return redirect('pages');
 	}
 
@@ -96,7 +98,7 @@ class PageController extends Controller {
         $page = Page::findOrFail($id);
 
         $page->delete();
-
+        \Session::flash('flash_message', 'Page Deleted ');
         return redirect()->route('pages.index');
 	}
 
