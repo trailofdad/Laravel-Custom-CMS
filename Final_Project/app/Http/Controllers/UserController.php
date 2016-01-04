@@ -57,7 +57,7 @@ class UserController extends Controller {
                 Permission_User::create(['user_id' => User::all()->last()->id, 'permission_id' => $permission]);
             }
         }
-
+        \Session::flash('flash_message', 'User Created');
         return redirect('users');
        	}
 
@@ -88,6 +88,7 @@ class UserController extends Controller {
         $user = User::findOrFail($id);
      //        $permissions = Permission::oldest()->lists('name','id');
         $activePermissions = Permission_User::where('user_id', $id)->lists('permission_id');
+
         return view('users.edit', compact('user', 'permissionsArray','activePermissions', 'style'));
 	}
 
@@ -113,6 +114,7 @@ class UserController extends Controller {
         }
         $user = User::findOrFail($id);
         $user->update($request->all());
+        \Session::flash('flash_message', 'User Modified');
 
         return redirect('users');
 	}//there is a problem here that needs to be fixed, need to make sure permission is proper and then we can build logic and middle wear to
@@ -129,6 +131,7 @@ class UserController extends Controller {
         $user = User::findOrFail($id);
 
         $user->delete();
+        \Session::flash('flash_message', 'User Deleted');
 
         return redirect ('users');
 	}

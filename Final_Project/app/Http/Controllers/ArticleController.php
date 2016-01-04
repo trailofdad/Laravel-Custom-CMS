@@ -52,7 +52,7 @@ class ArticleController extends Controller {
         $article = new Article($request->all());
 
         Auth::user()->articles()->save($article);
-
+        \Session::flash('flash_message', 'Article Created');
 //        Article::create(Request::all());
         return redirect('articles');
 	}
@@ -97,6 +97,7 @@ class ArticleController extends Controller {
 	{   $request['modified_by'] = Auth::id();
         $article = Article::findOrFail($id);
         $article->update(Request::all());
+        \Session::flash('flash_message', 'Article Edited');
         return redirect('articles');
 	}
 
@@ -111,6 +112,7 @@ class ArticleController extends Controller {
         $article = Article::findOrFail($id);
 
         $article->delete();
+        \Session::flash('flash_message', 'Article Deleted');
 
         return redirect()->route('articles.index');
 	}
