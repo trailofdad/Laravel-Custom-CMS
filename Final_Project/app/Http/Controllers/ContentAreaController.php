@@ -65,8 +65,8 @@ class ContentAreaController extends Controller {
 	 */
 	public function edit($id)
 	{
-        $contentArea = ContentAreas::findOrFail($id);
-        return view('contentAreas.edit', compact('contentAreas'));
+        $contentArea = ContentArea::findOrFail($id);
+        return view('contentAreas.edit', compact('contentArea'));
 	}
 
 	/**
