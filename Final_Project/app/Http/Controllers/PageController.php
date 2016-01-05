@@ -46,7 +46,7 @@ class PageController extends Controller {
 	public function store(PageRequest $request)
 	{
         $request['created_by'] = Auth::id();
-        Page::create(Request::all());
+        Page::create($request->all());
         \Session::flash('flash_message', 'Page Created');
         return redirect('pages');
 	}
@@ -86,7 +86,7 @@ class PageController extends Controller {
 	{
         $request['modified_by'] = Auth::id();
         $page = Page::findOrFail($id);
-        $page->update(Request::all());
+        $page->update($request->all());
         \Session::flash('flash_message', 'Page Updated');
         return redirect('pages');
 	}

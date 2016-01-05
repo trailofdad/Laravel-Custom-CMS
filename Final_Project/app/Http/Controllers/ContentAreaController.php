@@ -44,7 +44,7 @@ class ContentAreaController extends Controller {
 	public function store(ContentAreaRequest $request)
 	{
         $request['created_by'] = Auth::id();
-        ContentArea::create(Request::all());
+        ContentArea::create($request->all());
         \Session::flash('flash_message', 'Content Area Created');
         return redirect('contentAreas');
 	}
@@ -83,7 +83,7 @@ class ContentAreaController extends Controller {
 	{
         $request['modified_by'] = Auth::id();
         $contentArea = ContentArea::findOrFail($id);
-        $contentArea->update(Request::all());
+        $contentArea->update($request->all());
         \Session::flash('flash_message', 'Content Area Updated');
         return redirect('contentAreas');
 	}

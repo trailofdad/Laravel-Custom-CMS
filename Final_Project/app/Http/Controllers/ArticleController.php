@@ -49,6 +49,7 @@ class ArticleController extends Controller {
 	public function store(ArticleRequest $request)
 	{
         $request['created_by'] = Auth::id();
+//        $request['modified_by'] = Auth::id();
         $article = new Article($request->all());
 
         Auth::user()->articles()->save($article);
@@ -98,7 +99,8 @@ class ArticleController extends Controller {
 	{
         $request['modified_by'] = Auth::id();
         $article = Article::findOrFail($id);
-        $article->update(Request::all());
+        $article->update($request->all());
+//change this to update request all and it now takes the modified by for articles.
         \Session::flash('flash_message', 'Article Edited');
         return redirect('articles');
 	}

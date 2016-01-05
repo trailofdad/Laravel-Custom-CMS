@@ -44,7 +44,7 @@ class TemplateController extends Controller {
 	public function store(TemplateRequest $request)
 	{
         $request['created_by'] = Auth::id();
-        Template::create(Request::all());
+        Template::create($request->all());
         \Session::flash('flash_message', 'Template Created');
         return redirect('templates');
 	}
@@ -83,7 +83,7 @@ class TemplateController extends Controller {
 	{
         $request['modified_by'] = Auth::id();
         $template = Template::findOrFail($id);
-        $template->update(Request::all());
+        $template->update($request->all());
         \Session::flash('flash_message', 'Template Updated');
         return redirect('templates');
 	}
