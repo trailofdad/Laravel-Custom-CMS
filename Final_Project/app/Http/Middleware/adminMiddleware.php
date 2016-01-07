@@ -30,7 +30,7 @@ class adminMiddleware {
             {
                 return $next($request);
             }
-            elseif ($url == 'articles/create' || $url == 'articles' && ($user->isWriter() || $user ->isEditor()))
+            elseif (0=== strpos($url, 'article') && ($user->isWriter() || $user ->isEditor()))
             {
                 return $next($request);
             }
