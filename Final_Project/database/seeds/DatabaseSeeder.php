@@ -121,7 +121,7 @@ class PermissionTableSeeder extends Seeder
         $permission3 = Permission::create([
             'id' => '3',
             'permission_id'=> '3',
-            'permission_description' => 'Author'
+            'permission_description' => 'Writer'
         ]);
     }
 }//end of PermissionTableSeeder class

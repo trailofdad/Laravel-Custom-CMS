@@ -24,16 +24,18 @@ class adminMiddleware {
             $url = $request->path();
             if ($url == 'users' && $user-> isAdministration()) {
                 return $next($request);
-
-            }   elseif ($url != 'articles' && $url != 'users' && $user ->isEditor())
+            }
+            elseif ($url != 'articles' && $url != 'users' && $user ->isEditor())
             //access to areas that are not users
             {
-                return $next($request); }
-                elseif ($url == 'articles' && ($user->isWriter() || $user ->isEditor())) {
-                return $next($request);}
+                return $next($request);
+            }
+            elseif ($url == 'articles' && ($user->isWriter() || $user ->isEditor()))
+            {
+                return $next($request);
+            }
             else {
                 return Redirect::to(URL::previous());
-
             }
         }
         return redirect('auth/login');
