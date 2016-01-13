@@ -26,13 +26,15 @@
 
 <div class="form-group">
     {!! Form::label('permissions', 'Permissions:') !!}
-    {!! Form::select('permission_ids', $permissionsArray, null, ['class' => 'form-control']) !!}
+    {!! Form::select('permission_ids[]', $permissionsArray, $activePermissions, ['class' => 'form-control', 'id'=> 'permissions', 'multiple']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
 </div>
 
-@section('footer')
-
+@section('scripts')
+    <script type="text/javascript">
+        $('select').select2();
+    </script>
 @endsection

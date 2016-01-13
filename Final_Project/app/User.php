@@ -35,27 +35,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function articles()
     {
-        return $this->hasMany('App\Article', 'created_by');
+        return $this->hasMany('App\Article', 'created_by', 'modified_by');
+
     }
 
     public function pages()
     {
-        return $this->hasMany('App\Page', 'created_by');
+        return $this->hasMany('App\Page', 'created_by', 'modified_by');
     }
 
     public function users()
     {
-        return $this->hasMany('App\User', 'created_by');
+        return $this->hasMany('App\User', 'created_by', 'modified_by');
     }
 
     public function templates()
     {
-        return $this->hasMany('App\CSS_Template', 'created_by');
+        return $this->hasMany('App\CSS_Template', 'created_by', 'modified_by');
     }
 
     public function areas()
     {
-        return $this->hasMany('App\Content_Area', 'created_by');
+        return $this->hasMany('App\Content_Area', 'created_by', 'modified_by');
     }
 
     public function permissions()
@@ -64,9 +65,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function isAdministration() {
-        $permissions=$this->permissions();
+        $permissions=$this->permissions()->get();
         foreach ($permissions as $permission){
-            if ($permission -> permission_description == "Administrator"){
+            if ($permission -> permission_description == "Administrator" ){
                 return true;
             }
 
@@ -76,7 +77,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
     public function isEditor() {
-        $permissions=$this->permissions();
+        $permissions=$this->permissions()->get();
         foreach ($permissions as $permission){
             if ($permission -> permission_description == "Editor"){
                 return true;
@@ -87,7 +88,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     }
     public function isWriter() {
-        $permissions=$this->permissions();
+        $permissions=$this->permissions()->get();
         foreach ($permissions as $permission){
             if ($permission -> permission_description == "Writer"){
                 return true;

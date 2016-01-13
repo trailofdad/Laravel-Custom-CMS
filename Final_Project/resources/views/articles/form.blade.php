@@ -16,13 +16,13 @@
 
 
 <div class="form-group">
-    {!! Form::label('pages', 'Pages:') !!}
-    {!! Form::select('pages', $pages, null, ['class' => 'form-control']) !!}
+    {!! Form::label('page', 'Page:') !!}
+    {!! Form::select('page', $pages, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('contentAreas', 'Content Area:') !!}
-    {!! Form::select('contentAreas', $contentAreas, null, ['class' => 'form-control']) !!}
+    {!! Form::label('area', 'Content Area:') !!}
+    {!! Form::select('area', $contentAreas, null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}

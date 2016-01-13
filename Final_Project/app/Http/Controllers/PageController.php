@@ -3,17 +3,22 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\PageRequest;
 use App\Page;
+use Illuminate\Support\Facades\Auth;
 use Request;
 
 class PageController extends Controller {
 
-//    public function __construct()
-//    {
-//        $this->middleware('admin');
-//    }
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the resource. public function __construct()
+    //    {
+    //        $this->middleware('admin');
+    //    }
 	 *
 	 * @return Response
 	 */
@@ -38,9 +43,11 @@ class PageController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(PageRequest $request)
 	{
-        Page::create(Request::all());
+        $request['created_by'] = Auth::id();
+        Page::create($request->all());
+        \Session::flash('flash_message', 'Page Created');
         return redirect('pages');
 	}
 
@@ -75,10 +82,12 @@ class PageController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, PageRequest $request)
 	{
+        $request['modified_by'] = Auth::id();
         $page = Page::findOrFail($id);
-        $page->update(Request::all());
+        $page->update($request->all());
+        \Session::flash('flash_message', 'Page Updated');
         return redirect('pages');
 	}
 
@@ -93,7 +102,7 @@ class PageController extends Controller {
         $page = Page::findOrFail($id);
 
         $page->delete();
-
+        \Session::flash('flash_message', 'Page Deleted ');
         return redirect()->route('pages.index');
 	}
 

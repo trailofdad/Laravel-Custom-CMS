@@ -14,6 +14,11 @@ class PageRequest extends Request {
 		return true;
 	}
 
+    public function update()
+    {
+        return true;
+    }
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -22,7 +27,9 @@ class PageRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
+            'name' => 'required|min:3',
+            'alias' => 'required',
+            'description'  => 'required'
 		];
 	}
 

@@ -9,7 +9,9 @@ class contentArea extends Model {
     protected $fillable = [
 
         'name',
+        'alias',
         'description',
+        'orderBy',
         'created_by',
         'modified_by',
         'display_order'

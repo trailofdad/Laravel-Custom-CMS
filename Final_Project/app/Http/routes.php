@@ -13,7 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', 'WelcomeController@index');
 
 Route::resource('pages', 'PageController');
 
@@ -25,10 +25,16 @@ Route::resource('templates', 'TemplateController');
 
 Route::resource('users', 'UserController');
 
+Route::get('api/search', 'ApiSearchController@index');
+
+Route::get('frontEnd/{page}/{article}', 'FrontEndController@page');
+Route::resource('frontEnd', 'FrontEndController');
+
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('api/search', 'ApiSearchController@index');
+
 

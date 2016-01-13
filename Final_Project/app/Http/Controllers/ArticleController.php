@@ -48,11 +48,12 @@ class ArticleController extends Controller {
      */
 	public function store(ArticleRequest $request)
 	{
-        $request['modified_by'] = Auth::id();
+        $request['created_by'] = Auth::id();
+//        $request['modified_by'] = Auth::id();
         $article = new Article($request->all());
 
         Auth::user()->articles()->save($article);
-
+        \Session::flash('flash_message', 'Article Created');
 //        Article::create(Request::all());
         return redirect('articles');
 	}
@@ -81,6 +82,7 @@ class ArticleController extends Controller {
 	 */
 	public function edit($id)
 	{
+        $request['modified_by'] = Auth::id();
         $article = Article::findOrFail($id);
         $pages = Page::oldest()->lists('name','id');
         $contentAreas= ContentArea::oldest()->lists('name','id');
@@ -93,10 +95,13 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{   $request['modified_by'] = Auth::id();
+	public function update($id, ArticleRequest $request)
+	{
+        $request['modified_by'] = Auth::id();
         $article = Article::findOrFail($id);
-        $article->update(Request::all());
+        $article->update($request->all());
+//change this to update request all and it now takes the modified by for articles.
+        \Session::flash('flash_message', 'Article Edited');
         return redirect('articles');
 	}
 
@@ -111,6 +116,7 @@ class ArticleController extends Controller {
         $article = Article::findOrFail($id);
 
         $article->delete();
+        \Session::flash('flash_message', 'Article Deleted');
 
         return redirect()->route('articles.index');
 	}

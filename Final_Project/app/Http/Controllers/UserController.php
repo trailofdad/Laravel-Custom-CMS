@@ -6,15 +6,16 @@ use App\Http\Requests\UserRequest;
 use App\Permission;
 use App\Permission_User;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Request;
 
 class UserController extends Controller {
 
 
-//    public function __construct()
-//{
-//    $this->middleware('admin');
-//}
+    public function __construct()
+{
+    $this->middleware('admin');
+}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -45,22 +46,20 @@ class UserController extends Controller {
 	 */
 	public function store(UserRequest $request)
 	{
-//        User::create(Request::all());
-//        return redirect('users');
+//
+        $request['created_by'] = Auth::id();
         $request['password'] = bcrypt($request->input('password'));
         User::create($request->all());
-//        $user->FirstName = $request->input('FirstName');
-//        $user->LastName = $request->input('LastName');
-//        $user->email = $request->input('email');
-//
-//        $user->password = $password;
-//        $user->save();
-
-//        if ($request->input('permission_ids') != null) {
-//            User::all()->last()->permission()->attach($request->input('permission_ids'));
-//        }
+        $permissions = $request->get('permission_ids');
+//        dd ($permissions);
+        if ($permissions != null) {
+            foreach ($permissions as $permission) {
+                Permission_User::create(['user_id' => User::all()->last()->id, 'permission_id' => $permission]);
+            }
+        }
+        \Session::flash('flash_message', 'User Created');
         return redirect('users');
-	}
+       	}
 
 	/**
 	 * Display the specified resource.
@@ -88,7 +87,9 @@ class UserController extends Controller {
         $permissionsArray = Permission::lists('permission_description','permission_id');
         $user = User::findOrFail($id);
      //        $permissions = Permission::oldest()->lists('name','id');
-        return view('users.edit', compact('user', 'permissionsArray'));
+        $activePermissions = Permission_User::where('user_id', $id)->lists('permission_id');
+
+        return view('users.edit', compact('user', 'permissionsArray','activePermissions', 'style'));
 	}
 
 	/**
@@ -101,16 +102,19 @@ class UserController extends Controller {
 	{
         $request['modified_by'] = Auth::id();
         $request['password'] = bcrypt($request->input('password'));
-        $permissions = $request->get('permissions');
+        $permissions = $request->get('permission_ids');
         Permission_User::where('user_id', $id)->delete();
+        if ($permissions != null) {
         foreach ($permissions as $permission) {
             Permission_User::create([
                 'user_id' => $id,
-                'permission_id' => $permission,
-            ]);
+                'permission_id' =>
+ $permission,
+            ]);}
         }
         $user = User::findOrFail($id);
         $user->update($request->all());
+        \Session::flash('flash_message', 'User Modified');
 
         return redirect('users');
 	}//there is a problem here that needs to be fixed, need to make sure permission is proper and then we can build logic and middle wear to
@@ -127,6 +131,7 @@ class UserController extends Controller {
         $user = User::findOrFail($id);
 
         $user->delete();
+        \Session::flash('flash_message', 'User Deleted');
 
         return redirect ('users');
 	}

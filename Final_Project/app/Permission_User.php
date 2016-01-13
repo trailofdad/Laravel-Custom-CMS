@@ -17,6 +17,7 @@ class Permission_User extends Model {
      * @var array
      */
     protected $fillable = [
+        'id',
         'user_id',
         'permission_id',
     ];

@@ -15,6 +15,7 @@ class CreatePermissionsTable extends Migration {
     {
         Schema::create('permissions', function(Blueprint $table)
         {
+            $table->increments('id');
             $table->integer('permission_id');
             $table->string('permission_description');
             $table->timestamps();
@@ -22,12 +23,15 @@ class CreatePermissionsTable extends Migration {
 
         Schema::create('permission_user', function(Blueprint $table)
         {
-            $table->integer('user_id')->unsigned()->index()->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users');
-
+            $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
             $table->integer('permission_id')->unsigned()->index();
-            $table->foreign('permission_id')->references('permission_id')->on('permissions')->onDelete('cascade');
             $table->timestamps();
+
+            //fk
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
+
         });
     }
 
@@ -39,6 +43,6 @@ class CreatePermissionsTable extends Migration {
     public function down()
     {
         Schema::drop('permissions');
-        Schema::drop('Permission_User');
+        Schema::drop('permission_user');
     }
 }

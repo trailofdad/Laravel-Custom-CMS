@@ -3,6 +3,8 @@
 use App\ContentArea;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContentAreaRequest;
+use Illuminate\Support\Facades\Auth;
 use Request;
 
 
@@ -13,10 +15,10 @@ class ContentAreaController extends Controller {
 	 *
 	 * @return Response
 	 */
-//    public function __construct()
-//    {
-//        $this->middleware('admin');
-//    }
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 
 	public function index()
 	{
@@ -39,9 +41,11 @@ class ContentAreaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(ContentAreaRequest $request)
 	{
-        ContentArea::create(Request::all());
+        $request['created_by'] = Auth::id();
+        ContentArea::create($request->all());
+        \Session::flash('flash_message', 'Content Area Created');
         return redirect('contentAreas');
 	}
 
@@ -65,8 +69,8 @@ class ContentAreaController extends Controller {
 	 */
 	public function edit($id)
 	{
-        $contentArea = ContentAreas::findOrFail($id);
-        return view('contentAreas.edit', compact('contentAreas'));
+        $contentArea = ContentArea::findOrFail($id);
+        return view('contentAreas.edit', compact('contentArea'));
 	}
 
 	/**
@@ -75,10 +79,12 @@ class ContentAreaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, ContentAreaRequest $request)
 	{
+        $request['modified_by'] = Auth::id();
         $contentArea = ContentArea::findOrFail($id);
-        $contentArea->update(Request::all());
+        $contentArea->update($request->all());
+        \Session::flash('flash_message', 'Content Area Updated');
         return redirect('contentAreas');
 	}
 
@@ -93,7 +99,7 @@ class ContentAreaController extends Controller {
         $contentArea = ContentArea::findOrFail($id);
 
         $contentArea->delete();
-
+        \Session::flash('flash_message', 'Content Area Deleted');
         return redirect()->route('contentAreas.index');
 	}
 
