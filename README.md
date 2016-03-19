@@ -1,4 +1,4 @@
 # PHP Final Project
 Findlay Hiltchie &amp; Christian Hapgood
 
-![Screenshot 1](screenshots/Screenshot2.JPG)
+![Screenshot 1](screenshots/screen1.JPG)
